@@ -28,10 +28,6 @@ class Building{
     ambientLight(lR, lG, lB);
     pointLight(lR, lG, lB, x, y, z);
     prismBuild();
-    pushMatrix();
-    translate(width/4, height/4);
-    box(100);
-    popMatrix();
   }
   
   void prismBuild(){
@@ -44,8 +40,8 @@ class Building{
     //noFill();
     fill(lR, lR);
     //how to make glowing (blur) effect only on buildings?
-    filter(BLUR, 2);
-    fill(255);
+    //filter(BLUR, 2);
+    //fill(255);
     
     beginShape();
     vertex(-x, -y,  z);
