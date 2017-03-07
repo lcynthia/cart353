@@ -19,3 +19,6 @@ Ways of making the shield of light appear in sky?
 How to make sky in 3D space?
 - Do skybox
 - Design sky and use translate and rotate
+
+How to make light glow and possibly reflect on things?
+- Blur filter (right now blurs the whole canvas though)
