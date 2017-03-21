@@ -1,15 +1,14 @@
-class Food extends MainParticle {
+class Food extends Particle {
   float solidityF = super.solidity;
   color colFo;
   
   Food(){
-    super(random(width), 0);
+    super(random(width), 0, color(200, 190, 130));
 
-    colFo = color(200, 190, 130);
   }
   
   void display(){
-    fill(colFo, solidityF);
+    fill(super.colPart, solidityF);
     super.display();
   }
 }

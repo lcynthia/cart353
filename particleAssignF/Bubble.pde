@@ -1,21 +1,19 @@
-class Bubble extends MainParticle{
+class Bubble extends Particle{
   color strokeB;
   color fillB;
 
   
-  Bubble(){
-    super(350, 350);
+  Bubble(PVector newLoc){
+    super(newLoc.x, newLoc.y, color(170, 200, 225));
     strokeB = color(180, 230, 250);
-    fillB = color(170, 200, 225);
+
 
   }
   
   void display(){
     stroke(strokeB);
-    fill(fillB);
-    super.display();
-
-    
+    fill(super.colPart);
+    ellipse(location.x, location.y, super.mass, super.mass);
   }
   
 }

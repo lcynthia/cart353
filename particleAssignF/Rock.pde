@@ -1,7 +1,7 @@
-class Rock extends MainParticle {
+class Rock extends Particle {
   
   Rock(){
-    super(random(width), 0);
+    super(random(width), 0, color(125));
   }
   
   //function responsible for applying fluid force on Rock
