@@ -32,11 +32,11 @@ void setup() {
     layer[i] = new Sky(new PVector(0, 60*i, -200), width*4, 60, color(9*i, opaSky));
   }
   //making instance of terrain object
-  terrain = new Street(width/2, 400, -250, 500, 800);
+  terrain = new Street(new PVector(width/2, 400, -250), 500, 800);
   //making instances of Building object
-  test = new Building(50, 100, 50, width/2, height/2, 0);
-  test2 = new Building(100, 200, 50, width/2, height/4, -600);
-  test3 = new Building(25, 150, 30, width/4, 250, 75);
+  test = new Building(new PVector(50, 100, 50), new PVector(width/2, height/2, 0));
+  test2 = new Building(new PVector(100, 200, 50), new PVector(width/2, height/4, -600));
+  test3 = new Building(new PVector(25, 150, 30), new PVector(width/4, 250, 75));
 }
 
 void draw() {

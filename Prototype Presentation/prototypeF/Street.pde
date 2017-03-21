@@ -1,17 +1,13 @@
 class Street {
   //declaring x, y and z for coordinates of the rectangle making the terrain
-  int x;
-  int y; 
-  int z;
+  PVector location;
   //declaring variables for length and width of terrain
   int tLength;
   int tWidth;
 
-  Street(int newX, int newY, int newZ, int newLength, int newWidth) {
+  Street(PVector newLoc, int newLength, int newWidth) {
     //assigning variables to temporary ones taken from constructor
-    x = newX;
-    y = newY;
-    z = newZ;
+    location = newLoc;
     tLength = newLength;
     tWidth = newWidth;
   }
@@ -21,7 +17,7 @@ class Street {
     fill(155);
     noStroke();
     pushMatrix();
-    translate(x, y, z);
+    translate(location.x, location.y, location.z);
     rotateX(PI/2);
     rectMode(CENTER);
     rect(0, 0, tLength, tWidth);
