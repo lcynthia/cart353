@@ -1,19 +1,16 @@
-class Bubble extends Particle{
+class Bubble extends Particle {
+  //declaring variable for color of stroke of Bubble
   color strokeB;
-  color fillB;
 
-  
-  Bubble(PVector newLoc){
-    super(newLoc.x, newLoc.y, color(170, 200, 225));
-    strokeB = color(180, 230, 250);
-
-
+  Bubble(PVector newLoc) {
+    //constructor from parent class taking position, fill color and acceleration
+    super(newLoc.x, newLoc.y, color(170, 200, 225, 70), new PVector(random(-0.1, 0.1), random(-0.1, 0.1)));
+    strokeB = color(180, 230, 250, 70);
   }
-  
-  void display(){
+
+  void display() {
     stroke(strokeB);
-    fill(super.colPart);
-    ellipse(location.x, location.y, super.mass, super.mass);
+    fill(colPart);
+    ellipse(location.x, location.y, mass/2, mass/2);
   }
-  
 }

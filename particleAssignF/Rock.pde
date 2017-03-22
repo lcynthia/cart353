@@ -1,28 +1,24 @@
 class Rock extends Particle {
-  
-  Rock(){
-    super(random(width), 0, color(125));
+
+  Rock() {
+    //constructor from parent class taking position, fill color and acceleration
+    super(random(width/2-15, width/2+15), -10, color(85, 115, 100), new PVector(random(-0.01, 0.01), random(0.5, 0.8)));
   }
-  
-  //function responsible for applying fluid force on Rock
-  void drag(Water r){
-    float speed = velocity.mag();
-    float dragMagnitude = r.coe * speed * speed;
-    
-    PVector drag = velocity.get();
-    drag.mult(-1);
-    drag.normalize();
-    
-    drag.mult(dragMagnitude);
-    
-    applyForce(drag);
+
+
+  void display() {
+    stroke(125);
+    fill(colPart);
+    rect(location.x, location.y, mass*3, mass*3);
   }
-  
-  boolean isInWater(Water r){
-    if(location.x > r.x && location.x < r.x+r.w && location.y > r.y && location.y < r.y+r.h){
-      return true;
+
+
+  //function to keep Rock at same opacity while Food is dissolving
+  boolean isOut() {
+    if (solidity < 0.0) {
+      return false;
     } else {
       return false;
+    }
   }
-}
 }
