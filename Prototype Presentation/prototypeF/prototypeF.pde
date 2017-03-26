@@ -21,8 +21,7 @@ float m;
 
 void setup() {
   size(800, 500, P3D);
-  //Dark blue background
-  background(10, 5, 12);
+  
   //making instances of Star objects
   for (int i = 0; i < starCount; i ++) {
     shine[i] = new Star(new PVector(random(7500), random(5000)), int(random(1, 5)));
@@ -32,7 +31,7 @@ void setup() {
     layer[i] = new Sky(new PVector(0, 60*i, -200), width*4, 60, color(9*i, opaSky));
   }
   //making instance of terrain object
-  terrain = new Street(new PVector(width/2, 400, -250), 500, 800);
+  terrain = new Street(new PVector(width/2, 400, -250), 1000, 1000);
   //making instances of Building object
   test = new Building(new PVector(50, 100, 50), new PVector(width/2, height/2, 0));
   test2 = new Building(new PVector(100, 200, 50), new PVector(width/2, height/4, -600));
@@ -40,9 +39,15 @@ void setup() {
 }
 
 void draw() {
+  //Dark blue background
+  background(10, 5, 12);
   //display Star objects
   for (int i = 0; i < starCount; i ++) {
     shine[i].display();
+  }
+  //display Sky objects
+  for (int i = 0; i < skyCount; i ++) {
+    layer[i].display();
   }
   //display the terrain
   terrain.display();
@@ -50,10 +55,7 @@ void draw() {
   test.display();
   test2.display();
   test3.display();
-  //display Sky objects
-  for (int i = 0; i < skyCount; i ++) {
-    layer[i].display();
-  }
+  
 }
 
 void keyPressed() {
