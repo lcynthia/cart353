@@ -2,7 +2,12 @@
 Building test;
 Building test2;
 Building test3;
+//declaring Street object
 Street terrain;
+//declaring Space object
+Space one;
+//declaring Window object
+Window glass;
 //creating skyCount variable for array length of Sky
 int skyCount = 20;
 //creating starCount variable for array length of Star
@@ -32,10 +37,14 @@ void setup() {
   }
   //making instance of terrain object
   terrain = new Street(new PVector(width/2, 400, -250), 1000, 1000);
+  //making instance of Space object
+  one = new Space(-600, -1700, -1200);
   //making instances of Building object
   test = new Building(new PVector(50, 100, 50), new PVector(width/2, height/2, 0));
   test2 = new Building(new PVector(100, 200, 50), new PVector(width/2, height/4, -600));
   test3 = new Building(new PVector(25, 150, 30), new PVector(width/4, 250, 75));
+  //making instance of window
+  glass = new Window();
 }
 
 void draw() {
@@ -51,11 +60,14 @@ void draw() {
   }
   //display the terrain
   terrain.display();
+  //display Space
+  one.display();
   //display Building object
   test.display();
   test2.display();
   test3.display();
-  
+  //display Window object
+  glass.display(test3);
 }
 
 void keyPressed() {

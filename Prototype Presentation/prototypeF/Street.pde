@@ -1,3 +1,4 @@
+//HOW TO MAKE FILL OF TERRAIN FLUCTUATE WITH MOVEMENT
 class Street {
   //declaring x, y and z for coordinates of the rectangle making the terrain
   PVector location;
@@ -8,6 +9,7 @@ class Street {
   int scale = 20;
   float flying = 0;
   float[][] terrain;
+
 
   Street(PVector newLoc, int newLength, int newWidth) {
     //assigning variables to temporary ones taken from constructor
@@ -21,9 +23,11 @@ class Street {
   }
 
   void display() {
+    ambientLight(55, 55, 55);
+    pointLight(100, 100, 100, location.x, location.y, location.z);
     //draw gray terrain (with the use of a rectangle) on canvas
-    noFill();
-    stroke(125);
+    fill(150);
+    noStroke();
     pushMatrix();
     translate(location.x, location.y, location.z);
     rotateX(PI/2);
@@ -39,6 +43,7 @@ class Street {
       }
       yoff += 0.5;
     }
+    
     for (int y= 0; y < rows - 1; y++) {
       beginShape(TRIANGLE_STRIP);
       for (int x = 0; x < cols; x++) {
