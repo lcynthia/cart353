@@ -25,8 +25,8 @@ float m;
 
 
 void setup() {
+  //fullScreen(P3D, SPAN);
   size(800, 500, P3D);
-  
   //making instances of Star objects
   for (int i = 0; i < starCount; i ++) {
     shine[i] = new Star(new PVector(random(7500), random(5000)), int(random(1, 5)));
@@ -36,9 +36,9 @@ void setup() {
     layer[i] = new Sky(new PVector(0, 60*i, -200), width*4, 60, color(9*i, opaSky));
   }
   //making instance of terrain object
-  terrain = new Street(new PVector(width/2, 400, -250), 1000, 1000);
+  terrain = new Street(new PVector(width/2, 4*(height/5), -250), 1000, 1000);
   //making instance of Space object
-  one = new Space(-600, -1700, -1200);
+  one = new Space(-600, -8000, -1700);
   //making instances of Building object
   test = new Building(new PVector(50, 100, 50), new PVector(width/2, height/2, 0));
   test2 = new Building(new PVector(100, 200, 50), new PVector(width/2, height/4, -600));
