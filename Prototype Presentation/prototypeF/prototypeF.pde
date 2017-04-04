@@ -6,6 +6,7 @@ Building test3;
 Street terrain;
 //declaring Space object
 Space one;
+Wall mur;
 
 //creating skyCount variable for array length of Sky
 int skyCount = 20;
@@ -42,11 +43,11 @@ void setup() {
   one = new Space(-600, -8000, -1700);
   //making instances of Building object
 
-  test = new Building(new PVector(50, 100, 50), new PVector(width/2, height/2, 0));
+  test = new Building(new PVector(width/2, height/4, 0), 50, 200, 100);
 
-  test2 = new Building(new PVector(100, 200, 50), new PVector(width/2, height/4, -600));
-  test3 = new Building(new PVector(25, 150, 30), new PVector(width/4, 250, 75));
-
+  test2 = new Building(new PVector(width/1.5, height/4, -600), 100, 100, 200);
+  test3 = new Building(new PVector(width/4, 150, 75), 150, 300, 50);
+  mur = new Wall(new PVector(width-100, height/2, 0), 100, 200);
 }
 
 void draw() {
@@ -74,7 +75,7 @@ void draw() {
 
   test2.display();
   test3.display();
-
+  mur.display();
 }
 
 void keyPressed() {

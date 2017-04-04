@@ -1,32 +1,50 @@
 class Building {
-  //declaring location.x, location.y and location.z for the shape of the prism (building)
-  PVector location;
   //declaring location.xOr, location.yOr and location.zOr for the coordinates of the origin of prism
   PVector locationOr;
+  float sizeX;
+  float sizeY;
+  float sizeZ;
   //declaring lR, lG and lB for RGB values of the functions for light
   int lR;
   int lG;
   int lB;
+  Wall[] w = new Wall[4];
 
 
-
-  Building(PVector newLoc, PVector newLocOr) {
+  Building(PVector newLocOr, float newX, float newY, float newZ) {
     //setting location.x, location.y, location.z, location.xOr, location.yOr and location.zOr to variable taken in the constructor
-    location = newLoc;
     locationOr = newLocOr;
+    sizeX = newX;
+    sizeY = newY;
+    sizeZ = newZ;
     //setting lR, lG and lB to 50
     lR = 50;
     lG = 50;
     lB = 50;
+    for (int i = 0; i < 4; i++){
+    w[i] = new Wall(locationOr, sizeX, sizeY);
+    }
   }
 
   void display() {
     //insert ambient light and point light for buildings
     ambientLight(lR, lG, lB);
-    pointLight(lR, lG, lB, location.x, location.y, location.z);
+    pointLight(lR, lG, lB, locationOr.x, locationOr.y, locationOr.z);
     //draw the prism
     prismBuild();
-    window();
+    //for (int i = 0; i < 4; i++){
+    //  pushMatrix();
+    //  //translate(location.x, location.y, location.z);
+    //  rotateY(0);
+    //  w[0].display();
+    //  rotateY(PI/2);
+    //  w[1].display();
+    //  rotateY(PI);
+    //  w[2].display();
+    //  rotateY(PI + PI/2);
+    //  w[3].display();
+    //  popMatrix();
+    //}
   }
 
 
@@ -45,11 +63,11 @@ class Building {
     //fill(255);
 
     beginShape();
-    vertex(-location.x, -location.y, location.z);
-    vertex( location.x, -location.y, location.z);
-    vertex( location.x, location.y, location.z);
-    vertex(-location.x, location.y, location.z);
-    vertex(-location.x, -location.y, location.z);
+    vertex(0, 0, sizeZ);
+    vertex( sizeX, 0, sizeZ);
+    vertex( sizeX, sizeY, sizeZ);
+    vertex(0, sizeY, sizeZ);
+    vertex(0, 0, sizeZ);
 
     //rect(-location.x, -location.y, 10, 10);
 
@@ -57,62 +75,51 @@ class Building {
     
     beginShape();
 
-    vertex(-location.x, -location.y, location.z);
-    vertex(-location.x, -location.y, -location.z);
-    vertex(-location.x, location.y, -location.z);
-    vertex(-location.x, location.y, location.z);
-    vertex(-location.x, -location.y, location.z);
+    vertex(sizeX, 0, sizeZ);
+    vertex(sizeX, 0, 0);
+    vertex(sizeX, sizeY, 0);
+    vertex(sizeX, sizeY, sizeZ);
+    vertex(sizeX, 0, sizeZ);
 
     endShape();
     beginShape();
 
-    vertex(-location.x, -location.y, -location.z);
-    vertex( location.x, -location.y, -location.z);
-    vertex( location.x, location.y, -location.z);
-    vertex(-location.x, location.y, -location.z);
-    vertex(-location.x, -location.y, -location.z);
+    vertex(sizeX, 0, 0);
+    vertex( 0, 0, 0);
+    vertex( 0, sizeY, 0);
+    vertex(sizeX, sizeY, 0);
+    vertex(sizeX, 0, 0);
 
     endShape();
     beginShape();
 
-    vertex( location.x, -location.y, -location.z);
-    vertex( location.x, -location.y, location.z);
-    vertex( location.x, location.y, location.z);
-    vertex( location.x, location.y, -location.z);
-    vertex( location.x, -location.y, -location.z);
+    vertex( 0, 0, 0);
+    vertex( 0, 0, sizeZ);
+    vertex( 0, sizeY, sizeZ);
+    vertex( 0, sizeY, 0);
+    vertex( 0, 0, 0);
 
     endShape();
     beginShape();
 
-    vertex(-location.x, -location.y, location.z);
-    vertex(-location.x, -location.y, -location.z);
-    vertex( location.x, -location.y, -location.z);
-    vertex( location.x, -location.y, location.z);
-    vertex(-location.x, -location.y, location.z);
+    vertex(0, 0, sizeZ);
+    vertex(sizeX, 0, sizeZ);
+    vertex(sizeX, 0, 0);
+    vertex(0, 0, 0);
+    vertex(0, 0, sizeZ);
 
     endShape();
     beginShape();
 
-    vertex(-location.x, location.y, location.z);
-    vertex(-location.x, location.y, -location.z);
-    vertex( location.x, location.y, -location.z);
-    vertex( location.x, location.y, location.z);
-    vertex(-location.x, location.y, location.z);
+    vertex(0, sizeY, sizeZ);
+    vertex(sizeX, sizeY, sizeZ);
+    vertex(sizeX, sizeY, 0);
+    vertex(0, sizeY, 0);
+    vertex(0, sizeY, sizeZ);
 
     endShape();
 
     popMatrix();
   }
   
-  void window(){
-    pushMatrix();
-    translate(locationOr.x, locationOr.y, locationOr.z);
-    rotateX(PI/4);
-    rotateY(PI/2);
-    rotateZ(-PI/4);
-    noStroke();
-    fill(255);
-    rect(-location.x/2, -location.y, 10, 10);
-    popMatrix();
-  }
 }
