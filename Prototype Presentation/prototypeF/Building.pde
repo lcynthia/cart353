@@ -26,6 +26,7 @@ class Building {
     pointLight(lR, lG, lB, location.x, location.y, location.z);
     //draw the prism
     prismBuild();
+    window();
   }
 
 
@@ -50,7 +51,10 @@ class Building {
     vertex(-location.x, location.y, location.z);
     vertex(-location.x, -location.y, location.z);
 
+    //rect(-location.x, -location.y, 10, 10);
+
     endShape();
+    
     beginShape();
 
     vertex(-location.x, -location.y, location.z);
@@ -97,6 +101,18 @@ class Building {
 
     endShape();
 
+    popMatrix();
+  }
+  
+  void window(){
+    pushMatrix();
+    translate(locationOr.x, locationOr.y, locationOr.z);
+    rotateX(PI/4);
+    rotateY(PI/2);
+    rotateZ(-PI/4);
+    noStroke();
+    fill(255);
+    rect(-location.x/2, -location.y, 10, 10);
     popMatrix();
   }
 }

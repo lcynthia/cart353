@@ -6,8 +6,7 @@ Building test3;
 Street terrain;
 //declaring Space object
 Space one;
-//declaring Window object
-Window glass;
+
 //creating skyCount variable for array length of Sky
 int skyCount = 20;
 //creating starCount variable for array length of Star
@@ -22,11 +21,13 @@ int opaSky = 30;
 float opaStar;
 //creating m for millis 
 float m;
+float yCount = 0;
 
 
 void setup() {
   //fullScreen(P3D, SPAN);
   size(800, 500, P3D);
+  background(10, 5, 12);
   //making instances of Star objects
   for (int i = 0; i < starCount; i ++) {
     shine[i] = new Star(new PVector(random(7500), random(5000)), int(random(1, 5)));
@@ -40,11 +41,12 @@ void setup() {
   //making instance of Space object
   one = new Space(-600, -8000, -1700);
   //making instances of Building object
+
   test = new Building(new PVector(50, 100, 50), new PVector(width/2, height/2, 0));
+
   test2 = new Building(new PVector(100, 200, 50), new PVector(width/2, height/4, -600));
   test3 = new Building(new PVector(25, 150, 30), new PVector(width/4, 250, 75));
-  //making instance of window
-  glass = new Window();
+
 }
 
 void draw() {
@@ -52,6 +54,9 @@ void draw() {
   background(10, 5, 12);
   //camera(mouseX, height/2, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
   //display Star objects
+  //yCount += 0.005;
+  //rotateY(yCount);
+  //rotateX(yCount);
   for (int i = 0; i < starCount; i ++) {
     shine[i].display();
   }
@@ -62,22 +67,25 @@ void draw() {
   //display the terrain
   terrain.display();
   //display Space
-  one.display();
+  //one.display();
   //display Building object
+
   test.display();
+
   test2.display();
   test3.display();
-  //display Window object
-  glass.display(test3);
+
 }
 
 void keyPressed() {
   //if up arrow is pressed, increase light of buildings and light shield in sky
   if (key == CODED) {
     if (keyCode == UP) {
+
       test.lR += 1;
       test.lG += 1;
       test.lB += 1;
+   
       test2.lR += 1;
       test2.lG += 1;
       test2.lB += 1;
@@ -87,9 +95,11 @@ void keyPressed() {
       opaSky += 0.5;
       // if down arrow is pressed, decrease light of buildings and light shield in sky
     } else if (keyCode == DOWN) {
+
       test.lR -= 1;
       test.lG -= 1;
       test.lB -= 1;
+
       test2.lR -= 1;
       test2.lG -= 1;
       test2.lB -= 1;
