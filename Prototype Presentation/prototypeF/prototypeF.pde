@@ -50,6 +50,7 @@ void setup() {
 void draw() {
   //Dark blue background
   background(10, 5, 12);
+  //camera(mouseX, height/2, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
   //display Star objects
   for (int i = 0; i < starCount; i ++) {
     shine[i].display();

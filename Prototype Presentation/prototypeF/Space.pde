@@ -27,11 +27,13 @@ class Space extends Street{
     }
     for (int y= 0; y < rows - 1; y++) {
       beginShape(TRIANGLE_STRIP);
-      texture(spacy);
+      
       for (int x = 0; x < cols; x++) {
-        
-        vertex(x*scale, y*scale, terrain[x][y], 0, 0);
-        vertex(x*scale, (y+1)*scale, terrain[x][y+1], 1024, 1024);
+        float imX = spacy.width / cols;
+        //float imY = spacy.height / scale;
+        texture(spacy);
+        vertex(x*scale, y*scale, terrain[x][y], imX, 0);
+        vertex(x*scale, (y+1)*scale, terrain[x][y+1], imX, spacy.height);
         //rect(x*scale, y*scale, scale, scale);
       }
       endShape();
