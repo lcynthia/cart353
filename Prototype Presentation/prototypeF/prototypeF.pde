@@ -40,13 +40,15 @@ void setup() {
   //making instance of terrain object
   terrain = new Street(new PVector(width/2, 4*(height/5), -250), 1000, 1000);
   //making instance of Space object
-  one = new Space(-600, -8000, -1700);
+
+  one = new Space(-1000, -5000, -2500);
+
   //making instances of Building object
 
-  test = new Building(new PVector(width/2, height/4, 0), 50, 200, 100);
+  test = new Building(new PVector(width/2, height/4, 0), 50, 200, 50);
 
-  test2 = new Building(new PVector(width/1.5, height/4, -600), 100, 100, 200);
-  test3 = new Building(new PVector(width/4, 150, 75), 150, 300, 50);
+  test2 = new Building(new PVector(width/1.2, height/4, -600), 200, 100, 200);
+  test3 = new Building(new PVector(width/4, 150, 75), 150, 300, 150);
   mur = new Wall(new PVector(width-100, height/2, 0), 100, 200);
 }
 
@@ -55,27 +57,29 @@ void draw() {
   background(10, 5, 12);
   //camera(mouseX, height/2, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
   //display Star objects
-  //yCount += 0.005;
-  //rotateY(yCount);
+  //translate(width, 0, 500);
+  yCount += 0.005;
+  rotateY(yCount);
   //rotateX(yCount);
   for (int i = 0; i < starCount; i ++) {
     shine[i].display();
   }
   //display Sky objects
-  for (int i = 0; i < skyCount; i ++) {
-    layer[i].display();
-  }
+  //for (int i = 0; i < skyCount; i ++) {
+  //  layer[i].display();
+  //}
   //display the terrain
   terrain.display();
   //display Space
-  //one.display();
+  one.display();
+
   //display Building object
 
   test.display();
 
   test2.display();
   test3.display();
-  mur.display();
+  //mur.display();
 }
 
 void keyPressed() {

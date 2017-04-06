@@ -32,19 +32,21 @@ class Building {
     pointLight(lR, lG, lB, locationOr.x, locationOr.y, locationOr.z);
     //draw the prism
     prismBuild();
-    //for (int i = 0; i < 4; i++){
-    //  pushMatrix();
-    //  //translate(location.x, location.y, location.z);
-    //  rotateY(0);
-    //  w[0].display();
-    //  rotateY(PI/2);
-    //  w[1].display();
-    //  rotateY(PI);
-    //  w[2].display();
-    //  rotateY(PI + PI/2);
-    //  w[3].display();
-    //  popMatrix();
-    //}
+    for (int i = 0; i < 4; i++){
+      pushMatrix();
+      //translate(locationOr.x, locationOr.y, locationOr.z);
+      w[0].display();
+      translate(sizeX, 0, 0);
+      rotateY(PI/2);
+      w[1].display();
+      translate(0, 0, -sizeZ);
+      rotateY(PI);
+      w[2].display();
+      translate(-sizeX, 0, 0);
+      rotateY(PI + PI/2);
+      w[3].display();
+      popMatrix();
+    }
   }
 
 

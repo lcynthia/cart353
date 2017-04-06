@@ -3,16 +3,13 @@ class Wall{
   PVector location;
   float sizeX;
   float sizeY;
-  //declaring location and size of windows on Wall
-  PVector locationWin;
+  //declaring size of windows on Wall
   float winX;
   float winY;
   float offset;
   
   Wall(PVector newLoc, float newSizeX, float newSizeY){
-    location = new PVector();
     location = newLoc;
-    locationWin = location.add(10, 10);
     sizeX = newSizeX;
     sizeY = newSizeY;
     
@@ -23,17 +20,18 @@ class Wall{
   
   void display(){
     pushMatrix();
+    translate(location.x, location.y, location.z);
     fill(125);
     stroke(255);
     rectMode(CORNER);
-    rect(location.x, location.y, sizeX, sizeY);
+    rect(0, 0, sizeX, sizeY);
     window();
     popMatrix();
   }
   
   void window(){
     pushMatrix();
-    translate(location.x, location.y);
+    //translate(location.x, location.y, location.z);
     fill(255);
     noStroke();
     rectMode(CORNER);
