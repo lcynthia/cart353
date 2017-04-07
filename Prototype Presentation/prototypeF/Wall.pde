@@ -7,12 +7,13 @@ class Wall{
   float winX;
   float winY;
   float offset;
+  int iD;
   
-  Wall(PVector newLoc, float newSizeX, float newSizeY){
+  Wall(PVector newLoc, float newSizeX, float newSizeY, int newID){
     location = newLoc;
     sizeX = newSizeX;
     sizeY = newSizeY;
-    
+    iD = newID;
     winX = 5;
     winY = 3;
     offset = 10;
@@ -20,7 +21,19 @@ class Wall{
   
   void display(){
     pushMatrix();
+    if (iD == 0){
     translate(location.x, location.y, location.z);
+    //rotateY(PI/2);
+    } else if (iD == 1){
+      translate(location.x + sizeX, location.y, location.z);
+    rotateY(PI/2);
+    } else if (iD == 2){
+      translate(location.x + sizeX, location.y, -location.z);
+    rotateY(PI);
+    } else if (iD == 3){
+      translate(location.x, location.y, -location.z);
+    rotateY(PI+PI/2);
+    }
     fill(125);
     stroke(255);
     rectMode(CORNER);

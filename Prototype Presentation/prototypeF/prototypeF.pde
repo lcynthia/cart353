@@ -49,7 +49,7 @@ void setup() {
 
   test2 = new Building(new PVector(width/1.2, height/4, -600), 200, 100, 200);
   test3 = new Building(new PVector(width/4, 150, 75), 150, 300, 150);
-  mur = new Wall(new PVector(width-100, height/2, 0), 100, 200);
+  //mur = new Wall(new PVector(width-100, height/2, 0), 100, 200);
 }
 
 void draw() {
@@ -57,9 +57,9 @@ void draw() {
   background(10, 5, 12);
   //camera(mouseX, height/2, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
   //display Star objects
-  //translate(width, 0, 500);
-  yCount += 0.005;
-  rotateY(yCount);
+  //translate(width/1.5, 0, 0);
+  //yCount += 0.005;
+  //rotateY(yCount);
   //rotateX(yCount);
   for (int i = 0; i < starCount; i ++) {
     shine[i].display();
@@ -71,7 +71,7 @@ void draw() {
   //display the terrain
   terrain.display();
   //display Space
-  one.display();
+  //one.display();
 
   //display Building object
 

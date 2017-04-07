@@ -22,7 +22,7 @@ class Building {
     lG = 50;
     lB = 50;
     for (int i = 0; i < 4; i++){
-    w[i] = new Wall(locationOr, sizeX, sizeY);
+    w[i] = new Wall(locationOr, sizeX, sizeY, i);
     }
   }
 
@@ -33,19 +33,7 @@ class Building {
     //draw the prism
     prismBuild();
     for (int i = 0; i < 4; i++){
-      pushMatrix();
-      //translate(locationOr.x, locationOr.y, locationOr.z);
-      w[0].display();
-      translate(sizeX, 0, 0);
-      rotateY(PI/2);
-      w[1].display();
-      translate(0, 0, -sizeZ);
-      rotateY(PI);
-      w[2].display();
-      translate(-sizeX, 0, 0);
-      rotateY(PI + PI/2);
-      w[3].display();
-      popMatrix();
+      w[i].display();
     }
   }
 
