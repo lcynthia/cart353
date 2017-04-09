@@ -4,6 +4,7 @@ class Building {
   float sizeX;
   float sizeY;
   float sizeZ;
+
   //declaring lR, lG and lB for RGB values of the functions for light
   int lR;
   int lG;
@@ -15,24 +16,22 @@ class Building {
     //setting location.x, location.y, location.z, location.xOr, location.yOr and location.zOr to variable taken in the constructor
     locationOr = newLocOr;
     sizeX = newX;
-    sizeY = newY;
+    sizeY = locationOr.y;
     sizeZ = newZ;
+
     //setting lR, lG and lB to 50
     lR = 50;
     lG = 50;
     lB = 50;
-    for (int i = 0; i < 4; i++){
-    w[i] = new Wall(locationOr, sizeX, sizeY, i);
+    for (int i = 0; i < 4; i++) {
+        w[i] = new Wall(locationOr, sizeX, sizeY, i);
     }
   }
 
-  void display() {
-    //insert ambient light and point light for buildings
-    ambientLight(lR, lG, lB);
-    pointLight(lR, lG, lB, locationOr.x, locationOr.y, locationOr.z);
+  void display() {    
     //draw the prism
     prismBuild();
-    for (int i = 0; i < 4; i++){
+    for (int i = 0; i < 4; i++) {
       w[i].display();
     }
   }
@@ -62,7 +61,7 @@ class Building {
     //rect(-location.x, -location.y, 10, 10);
 
     endShape();
-    
+
     beginShape();
 
     vertex(sizeX, 0, sizeZ);
@@ -111,5 +110,4 @@ class Building {
 
     popMatrix();
   }
-  
 }

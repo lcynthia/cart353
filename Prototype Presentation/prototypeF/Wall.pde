@@ -21,6 +21,9 @@ class Wall{
   
   void display(){
     pushMatrix();
+    fill(125);
+    stroke(255);
+    rectMode(CORNER);
     if (iD == 0){
     translate(location.x, location.y, location.z);
     //rotateY(PI/2);
@@ -28,15 +31,12 @@ class Wall{
       translate(location.x + sizeX, location.y, location.z);
     rotateY(PI/2);
     } else if (iD == 2){
-      translate(location.x + sizeX, location.y, -location.z);
+      translate(location.x + sizeX, location.y, location.z - sizeX);
     rotateY(PI);
     } else if (iD == 3){
-      translate(location.x, location.y, -location.z);
+      translate(location.x, location.y, location.z - sizeX);
     rotateY(PI+PI/2);
     }
-    fill(125);
-    stroke(255);
-    rectMode(CORNER);
     rect(0, 0, sizeX, sizeY);
     window();
     popMatrix();

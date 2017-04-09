@@ -1,12 +1,16 @@
+//creating cityCount variable for array length of Building
+int cityCount = 10;
 //declaring Building objects
 Building test;
 Building test2;
 Building test3;
+Building[] city = new Building[cityCount];
 //declaring Street object
 Street terrain;
 //declaring Space object
 Space one;
-Wall mur;
+Wall[] mur = new Wall[4];
+;
 
 //creating skyCount variable for array length of Sky
 int skyCount = 20;
@@ -23,6 +27,7 @@ float opaStar;
 //creating m for millis 
 float m;
 float yCount = 0;
+
 
 
 void setup() {
@@ -44,12 +49,23 @@ void setup() {
   one = new Space(-1000, -5000, -2500);
 
   //making instances of Building object
-
+  for (int i = 0; i < city.length; i++) {
+    pushMatrix();
+    translate(terrain.location.x, terrain.location.y);
+    
+    int sizeCity = int(random(25, 200));
+    int locationSizeY = int(random(100, 350));
+    city[i] = new Building(new PVector(random(terrain.tWidth-200), locationSizeY, 
+    random(terrain.tLength-200)), sizeCity, locationSizeY, sizeCity);
+    popMatrix();
+  }
   test = new Building(new PVector(width/2, height/4, 0), 50, 200, 50);
 
   test2 = new Building(new PVector(width/1.2, height/4, -600), 200, 100, 200);
   test3 = new Building(new PVector(width/4, 150, 75), 150, 300, 150);
-  //mur = new Wall(new PVector(width-100, height/2, 0), 100, 200);
+  for (int i = 0; i < mur.length; i++) {
+    mur[i] = new Wall(new PVector(width/2, height/2, -50), 100, 200, i);
+  }
 }
 
 void draw() {
@@ -57,7 +73,7 @@ void draw() {
   background(10, 5, 12);
   //camera(mouseX, height/2, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
   //display Star objects
-  //translate(width/1.5, 0, 0);
+  //translate(-100, 100, -1000);
   //yCount += 0.005;
   //rotateY(yCount);
   //rotateX(yCount);
@@ -74,12 +90,16 @@ void draw() {
   //one.display();
 
   //display Building object
-
+  for (int i = 0; i < city.length; i++) {
+    city[i].display();
+  }
   test.display();
 
   test2.display();
   test3.display();
-  //mur.display();
+  //for (int i = 0; i < mur.length; i++){
+  //  mur[i].display();
+  //}
 }
 
 void keyPressed() {
@@ -90,7 +110,7 @@ void keyPressed() {
       test.lR += 1;
       test.lG += 1;
       test.lB += 1;
-   
+
       test2.lR += 1;
       test2.lG += 1;
       test2.lB += 1;
