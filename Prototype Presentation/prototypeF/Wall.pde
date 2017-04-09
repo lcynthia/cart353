@@ -10,15 +10,18 @@ class Wall{
   int iD;
   
   Wall(PVector newLoc, float newSizeX, float newSizeY, int newID){
+    //assigning location, size of wall and id to temporary variables from constructor
     location = newLoc;
     sizeX = newSizeX;
     sizeY = newSizeY;
     iD = newID;
+    //setting size of window and offset to specific values
     winX = 5;
     winY = 3;
     offset = 10;
   }
   
+  //function to draw Wall objects on the four sides of Building and afterwards draw windows on Walls
   void display(){
     pushMatrix();
     fill(125);
@@ -42,6 +45,7 @@ class Wall{
     popMatrix();
   }
   
+  //function to draw the windows
   void window(){
     pushMatrix();
     //translate(location.x, location.y, location.z);

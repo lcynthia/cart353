@@ -19,6 +19,7 @@ class Space extends Street{
     float yoff = flying;
     for (int y= 0; y < rows; y++) {
       float xoff = 0;
+      
       for (int x = 0; x < cols; x++) {
         terrain[x][y] = map(noise(xoff, yoff), 0, 1, -100, 100);
         xoff += 0.05;

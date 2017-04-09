@@ -5,10 +5,15 @@ class Street {
   //declaring variables for length and width of terrain
   int tLength;
   int tWidth;
+  //declaring variables for columns and rows on terrain
   int cols, rows;
+  //declaring scale for size of columns and rows
   int scale = 20;
+  //declaring variable for variation in terrain
   float flying = 0;
+  //creating array for z values of terrain
   float[][] terrain;
+
 
 
   Street(PVector newLoc, int newLength, int newWidth) {
@@ -19,7 +24,6 @@ class Street {
     cols = tWidth / scale;
     rows = tLength / scale;
     terrain = new float[cols][rows];
-    
   }
 
   void display() {
@@ -43,9 +47,9 @@ class Street {
       }
       yoff += 0.5;
     }
-    
+
     for (int y= 0; y < rows - 1; y++) {
-      beginShape(TRIANGLE_STRIP);
+      beginShape(TRIANGLE_STRIP);      
       for (int x = 0; x < cols; x++) {
         vertex(x*scale, y*scale, terrain[x][y]);
         vertex(x*scale, (y+1)*scale, terrain[x][y+1]);

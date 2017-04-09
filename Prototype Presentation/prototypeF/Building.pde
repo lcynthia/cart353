@@ -1,28 +1,21 @@
 class Building {
-  //declaring location.xOr, location.yOr and location.zOr for the coordinates of the origin of prism
+  //declaring locationOr for the coordinates of the origin of the prism
   PVector locationOr;
+  //declaring variable for dimensions of the prism
   float sizeX;
   float sizeY;
   float sizeZ;
-
-  //declaring lR, lG and lB for RGB values of the functions for light
-  int lR;
-  int lG;
-  int lB;
+  //creating array of Wall objects to put on sides of the prism
   Wall[] w = new Wall[4];
 
 
   Building(PVector newLocOr, float newX, float newY, float newZ) {
-    //setting location.x, location.y, location.z, location.xOr, location.yOr and location.zOr to variable taken in the constructor
+    //setting locationOr, sizeX, sizeY & sizeZ to variable taken in the constructor
     locationOr = newLocOr;
     sizeX = newX;
     sizeY = locationOr.y;
     sizeZ = newZ;
-
-    //setting lR, lG and lB to 50
-    lR = 50;
-    lG = 50;
-    lB = 50;
+    //making instances of Wall objects
     for (int i = 0; i < 4; i++) {
         w[i] = new Wall(locationOr, sizeX, sizeY, i);
     }
@@ -31,6 +24,7 @@ class Building {
   void display() {    
     //draw the prism
     prismBuild();
+    //display Wall objects
     for (int i = 0; i < 4; i++) {
       w[i].display();
     }
@@ -40,13 +34,14 @@ class Building {
   //function responsible for making the prism
   void prismBuild() {
     pushMatrix();
+    //translate to coordinate of origin
     translate(locationOr.x, locationOr.y, locationOr.z);
     stroke(255);
     rotateX(PI/4);
     rotateY(PI/2);
     rotateZ(-PI/4);
-    //fill(lR, lR);
-    fill(255, lR);
+
+    fill(255, 200);
     //how to make glowing (blur) effect onllocation.y on buildings?
     //filter(BLUR, 2);
     //fill(255);
@@ -58,7 +53,6 @@ class Building {
     vertex(0, sizeY, sizeZ);
     vertex(0, 0, sizeZ);
 
-    //rect(-location.x, -location.y, 10, 10);
 
     endShape();
 
