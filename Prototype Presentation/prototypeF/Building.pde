@@ -9,7 +9,7 @@ class Building {
   Wall[] w = new Wall[4];
 
 
-  Building(PVector newLocOr, float newX, float newY, float newZ) {
+  Building(PVector newLocOr, float newX, float newZ) {
     //setting locationOr, sizeX, sizeY & sizeZ to variable taken in the constructor
     locationOr = newLocOr;
     sizeX = newX;

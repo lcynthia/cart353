@@ -2,14 +2,14 @@ class Sky {
   //declaring PVector for location
   PVector location;
   //declaring variables for width and height of rectangles constituting the sky
-  int sizeX;
-  int sizeY;
+  float sizeX;
+  float sizeY;
   //declaring offset for spacing between each rectangle
-  int offset;
+  float offset;
   //declaring sColor for color of the rectangles
   color sColor;
 
-  Sky(PVector newLoc, int newSizeX, int newSizeY, color newColor) {
+  Sky(PVector newLoc, float newSizeX, float newSizeY, color newColor) {
     //assigning variables to temporary ones taken from constructor 
     location = newLoc;
     sizeX = newSizeX;
@@ -23,10 +23,10 @@ class Sky {
     fill(sColor);
     noStroke();
     pushMatrix();
-    translate(0, 600, -700);
+    translate(location.x, 500, location.z);
     rotateX(PI);
     //draw rectangle
-    rect(location.x, location.y, sizeX, sizeY);
+    rect(0, location.y, sizeX, sizeY);
     popMatrix();
   }
 }
