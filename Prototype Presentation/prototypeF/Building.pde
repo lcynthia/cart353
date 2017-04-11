@@ -17,7 +17,7 @@ class Building {
     sizeZ = newZ;
     //making instances of Wall objects
     for (int i = 0; i < 4; i++) {
-        w[i] = new Wall(locationOr, sizeX, sizeY, i);
+        w[i] = new Wall(locationOr, sizeX, sizeY, i, 50);
     }
   }
 
@@ -40,8 +40,8 @@ class Building {
     rotateX(PI/4);
     rotateY(PI/2);
     rotateZ(-PI/4);
-
-    fill(255, 200);
+    noFill();
+    //fill(255, 200);
     //how to make glowing (blur) effect onllocation.y on buildings?
     //filter(BLUR, 2);
     //fill(255);

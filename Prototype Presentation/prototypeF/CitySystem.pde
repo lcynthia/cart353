@@ -4,19 +4,19 @@ class CitySystem {
   //creating starCount variable for array length of Star
   int starCount = 1000;
   //declaring array of Sky objects 
-  Sky[][] layers = new Sky[4][skyCount];
+  Sky[][] layers = new Sky[skyCount][4];
   //declaring array of Stars objects
-  Star[][] shine = new Star[4][starCount];
+  Star[][] shine = new Star[starCount][4];
 
   CitySystem() {
     for (int i = 0; i < skyCount; i ++) {
       for (int j = 0; j < 4; j++) {
-        layers[j][i] = new Sky(new PVector(-1300, 60*i, -1300), width*3.3, 60, color(255-9*i, opaSky));
+        layers[i][j] = new Sky(new PVector(-1300, 60*i, -1300), width*3.3, 60, color(255-whiteVal*i, opaSky));
       }
     }
     for (int i = 0; i < starCount; i ++) {
       for (int j = 0; j < 4; j++) {
-        shine[j][i] = new Star(new PVector(random(8000), random(5000)), int(random(1, 5)));
+        shine[i][j] = new Star(new PVector(random(8000), random(5000)), int(random(1, 5)));
       }
     }
   }
@@ -33,9 +33,9 @@ class CitySystem {
           } else if (j==3){
             rotateY(PI+PI/2);
           }
-          shine[j][i].update();
-          shine[j][i].display();
-          layers[j][h].display();
+          shine[i][j].update();
+          shine[i][j].display();
+          layers[h][j].display();
         }
       }
       //for (int i = 0; i < skyCount; i ++) {

@@ -19,6 +19,7 @@ class Sky {
   }
 
   void display() {
+    
     //sColor for fill taken from constructor
     fill(sColor);
     noStroke();

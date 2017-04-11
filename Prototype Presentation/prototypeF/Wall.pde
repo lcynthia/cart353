@@ -1,4 +1,4 @@
-class Wall{
+class Wall {
   //declaring location and size of Wall
   PVector location;
   float sizeX;
@@ -8,8 +8,9 @@ class Wall{
   float winY;
   float offset;
   int iD;
-  
-  Wall(PVector newLoc, float newSizeX, float newSizeY, int newID){
+  int colWin;
+
+  Wall(PVector newLoc, float newSizeX, float newSizeY, int newID, int newCol) {
     //assigning location, size of wall and id to temporary variables from constructor
     location = newLoc;
     sizeX = newSizeX;
@@ -19,45 +20,67 @@ class Wall{
     winX = 5;
     winY = 3;
     offset = 10;
+    colWin = newCol;
   }
-  
+
   //function to draw Wall objects on the four sides of Building and afterwards draw windows on Walls
-  void display(){
+  void display() {
     pushMatrix();
-    fill(125);
-    stroke(255);
+    noFill();
+    stroke(colWin);
     rectMode(CORNER);
-    if (iD == 0){
-    translate(location.x, location.y, location.z);
-    //rotateY(PI/2);
-    } else if (iD == 1){
+    if (iD == 0) {
+      translate(location.x, location.y, location.z);
+      //rotateY(PI/2);
+      rectMode(CENTER);
+      rotateX(PI*2);
+      rectMode(CORNER);
+    } else if (iD == 1) {
       translate(location.x + sizeX, location.y, location.z);
-    rotateY(PI/2);
-    } else if (iD == 2){
+      rectMode(CENTER);
+      rotateX(PI*2);
+      rectMode(CORNER);
+      rotateY(PI/2);
+    } else if (iD == 2) {
       translate(location.x + sizeX, location.y, location.z - sizeX);
-    rotateY(PI);
-    } else if (iD == 3){
+      rectMode(CENTER);
+      rotateX(PI*2);
+      rectMode(CORNER);
+      rotateY(PI);
+    } else if (iD == 3) {
       translate(location.x, location.y, location.z - sizeX);
-    rotateY(PI+PI/2);
+      rectMode(CENTER);
+      rotateX(PI*2);
+      rectMode(CORNER);
+      rotateY(PI+PI/2);
     }
     rect(0, 0, sizeX, sizeY);
     window();
     popMatrix();
   }
-  
+
   //function to draw the windows
-  void window(){
+  void window() {
     pushMatrix();
     //translate(location.x, location.y, location.z);
-    fill(255);
+    fill(colWin);
     noStroke();
+    if (keyPressed) {
+      if (key == CODED) {
+        if (keyCode == UP) {
+          colWin += 1;
+        } else if (keyCode == DOWN) {
+          colWin -= 1;
+        } 
+        println(colWin);
+      }
+    }
     rectMode(CORNER);
-    for (int y = 0 ; y < sizeY/(winY+offset) - 1; y++){
-      for (int x = 0; x < sizeX/(winX+offset) - 1; x++){
+    for (int y = 0; y < sizeY/(winY+offset) - 1; y++) {
+      for (int x = 0; x < sizeX/(winX+offset) - 1; x++) {
         rect(x*(winX + offset) + offset, y*(winY + offset) + offset, winX, winY);
       }
     }
     popMatrix();
   }
-  
 }
