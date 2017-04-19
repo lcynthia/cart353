@@ -7,6 +7,7 @@ class Building {
   float sizeZ;
   //creating array of Wall objects to put on sides of the prism
   Wall[] w = new Wall[4];
+  float window = 30;
 
 
   Building(PVector newLocOr, float newX, float newZ) {
@@ -15,9 +16,10 @@ class Building {
     sizeX = newX;
     sizeY = locationOr.y;
     sizeZ = newZ;
+    float maxWin = constrain(window, 30, 255);
     //making instances of Wall objects
     for (int i = 0; i < 4; i++) {
-        w[i] = new Wall(locationOr, sizeX, sizeY, i, 50);
+        w[i] = new Wall(locationOr, sizeX, sizeY, i, maxWin);
     }
   }
 

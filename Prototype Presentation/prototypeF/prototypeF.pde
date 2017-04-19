@@ -1,4 +1,5 @@
 import processing.video.*;
+import java.util.Iterator;
 //Declaring cameraLight for video input
 Capture cameraLight;
 //creating cityCount variable for array length of Building
@@ -15,13 +16,9 @@ int skyCount = 20;
 //creating starCount variable for array length of Star
 int starCount = 1000;
 //declaring whiteVal for color of Sky objects
-float whiteVal = 9;
-//creating array of Sky objects
-Sky[] layer = new Sky[skyCount];
-Sky[] layer2 = new Sky[skyCount];
-Sky[] layer3 = new Sky[skyCount];
-Sky[] layer4 = new Sky[skyCount];
-Sky[] layer5 = new Sky[skyCount];
+float whiteVal = 1;
+//declaring CitySystem
+CitySystem light;
 //creating array of Star objects
 Star[] shine = new Star[starCount];
 Star[] shine2 = new Star[starCount];
@@ -63,23 +60,8 @@ void setup() {
   for (int i = 0; i < starCount; i ++) {
     shine5[i] = new Star(new PVector(random(8000), random(8000)), int(random(1, 5)));
   }
-
-  //making instances of Sky objects
-  for (int i = 0; i < skyCount; i ++) {
-    layer[i] = new Sky(new PVector(-1300, 60*i, -1300), width*3.3, 60, color(whiteVal*i, opaSky));
-  }
-  for (int i = 0; i < skyCount; i ++) {
-    layer2[i] = new Sky(new PVector(-1300, 60*i, -1300), width*3.3, 60, color(whiteVal*i, opaSky));
-  }
-  for (int i = 0; i < skyCount; i ++) {
-    layer3[i] = new Sky(new PVector(-1300, 60*i, -1300), width*3.3, 60, color(whiteVal*i, opaSky));
-  }
-  for (int i = 0; i < skyCount; i ++) {
-    layer4[i] = new Sky(new PVector(-1300, 60*i, -1300), width*3.3, 60, color(whiteVal*i, opaSky));
-  }
-  for (int i = 0; i < skyCount; i ++) {
-    layer5[i] = new Sky(new PVector(-1300, 60*i, -1300), width*3.3, 60, color(whiteVal*i, opaSky));
-  }
+  //making instance of CitySystem
+  light = new CitySystem();
   //making instance of terrain object
   terrain = new Street(new PVector(width/2, 4*(height/5), -250), 1000, 1000);
   //making instance of Space object
@@ -140,35 +122,10 @@ void draw() {
     shine5[i].display();
     popMatrix();
   }
-  //display Sky objects
-  for (int i = 0; i < skyCount; i ++) {
-    layer[i].display();
-  }
-  for (int i = 0; i < skyCount; i ++) {
-    pushMatrix();
-    rotateY(PI/2);
-    layer2[i].display();
-    popMatrix();
-  }
-  for (int i = 0; i < skyCount; i ++) {
-    pushMatrix();
-    rotateY(PI);
-    layer3[i].display();
-    popMatrix();
-  }
-  for (int i = 0; i < skyCount; i ++) {
-    pushMatrix();
-    rotateY(PI+PI/2);
-    layer4[i].display();
-    popMatrix();
-  }
-  //for (int i = 0; i < skyCount; i ++) {
-  //  pushMatrix();
-  //  rotateX(-PI/2);
-  //  layer5[i].display();
-  //  popMatrix();
-  //}
-
+  
+  //display CitySystem
+  light.shieldOpacity();
+  light.display();
 
   //display the terrain
   terrain.display();
@@ -189,11 +146,11 @@ void keyPressed() {
   if (key == CODED) {
     if (keyCode == UP) {
       opaSky += 2;
-      //whiteVal += 2;
+      whiteVal += 0.25;
       // if down arrow is pressed, decrease light of buildings and light shield in sky
     } else if (keyCode == DOWN) {
       opaSky -= 2;
-      //whiteVal -= 2;
+      whiteVal -= 0.25;
     }
   }
 }

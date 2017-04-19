@@ -8,9 +8,9 @@ class Wall {
   float winY;
   float offset;
   int iD;
-  int colWin;
+  float colWin;
 
-  Wall(PVector newLoc, float newSizeX, float newSizeY, int newID, int newCol) {
+  Wall(PVector newLoc, float newSizeX, float newSizeY, int newID, float newCol) {
     //assigning location, size of wall and id to temporary variables from constructor
     location = newLoc;
     sizeX = newSizeX;
@@ -26,34 +26,22 @@ class Wall {
   //function to draw Wall objects on the four sides of Building and afterwards draw windows on Walls
   void display() {
     pushMatrix();
-    noFill();
-    stroke(colWin);
+    
     rectMode(CORNER);
     if (iD == 0) {
       translate(location.x, location.y, location.z);
-      //rotateY(PI/2);
-      rectMode(CENTER);
-      rotateX(PI*2);
-      rectMode(CORNER);
     } else if (iD == 1) {
       translate(location.x + sizeX, location.y, location.z);
-      rectMode(CENTER);
-      rotateX(PI*2);
-      rectMode(CORNER);
       rotateY(PI/2);
     } else if (iD == 2) {
       translate(location.x + sizeX, location.y, location.z - sizeX);
-      rectMode(CENTER);
-      rotateX(PI*2);
-      rectMode(CORNER);
       rotateY(PI);
     } else if (iD == 3) {
       translate(location.x, location.y, location.z - sizeX);
-      rectMode(CENTER);
-      rotateX(PI*2);
-      rectMode(CORNER);
       rotateY(PI+PI/2);
     }
+    noFill();
+    stroke(colWin);
     rect(0, 0, sizeX, sizeY);
     window();
     popMatrix();
@@ -64,6 +52,7 @@ class Wall {
     pushMatrix();
     //translate(location.x, location.y, location.z);
     fill(colWin);
+    
     noStroke();
     if (keyPressed) {
       if (key == CODED) {
