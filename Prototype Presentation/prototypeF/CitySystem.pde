@@ -16,7 +16,7 @@ class CitySystem {
     if (keyPressed) {
       if (key == CODED) {
         if (keyCode == UP) {
-          for (int i = 0; i < 4; i++) {
+          for (int i = 0; i < 5; i++) {
             shield.add(new Sky(new PVector(-1300, 500, -1300), width*3.3, 60, color(colShield, opaSky), i));
           }
         }

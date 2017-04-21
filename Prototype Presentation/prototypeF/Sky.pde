@@ -25,34 +25,53 @@ class Sky {
     
     //sColor for fill taken from constructor
     
-    pushMatrix();
+   // pushMatrix();
     //translate(location.x, location.y, location.z);
-    rotateX(PI);
+   
     //draw rectangle
     if (iD == 0) {
+      pushMatrix();
       translate(location.x, location.y, location.z);
+      drawRects();
+      popMatrix();
+       //rotateX(PI);
     } else if (iD == 1) {
       pushMatrix();
       translate(location.x + sizeX, location.y, location.z);
-      rotateY(PI/2);
+      rotateY(-PI/2);
+       drawRects();
       popMatrix();
     } else if (iD == 2) {
       pushMatrix();
-      translate(location.x + sizeX, location.y, location.z - sizeX);
-      rotateY(PI);
+      translate(location.x + sizeX, location.y, location.z + sizeX);
+      rotateY(-PI);
+       drawRects();
       popMatrix();
     } else if (iD == 3) {
       pushMatrix();
-      translate(location.x, location.y, location.z - sizeX);
-      rotateY(PI+PI/2);
+      translate(location.x, location.y, location.z + sizeX);
+      rotateY(-(PI+PI/2));
+       drawRects();
+      popMatrix();
+    }
+    else if (iD == 4) {
+      pushMatrix();
+      translate(location.x + sizeX/6, -location.y, location.z);
+      rotateX(-PI/2);
+       drawRects();
       popMatrix();
     }
     
-    for (int i = 0; i < 20; i++){
+   
+   // popMatrix();
+  }
+  
+  void drawRects()
+  {
+     for (int i = 0; i < 20; i++){
     fill(sColor*i);
     noStroke();
-    rect(0, 60*i, sizeX, sizeY);
+    rect(0, -60*i, sizeX, sizeY);
     }
-    popMatrix();
   }
 }

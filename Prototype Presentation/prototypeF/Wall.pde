@@ -57,7 +57,8 @@ class Wall {
     if (keyPressed) {
       if (key == CODED) {
         if (keyCode == UP) {
-          colWin += 1;
+          if(colWin<255)
+            colWin += 1;
         } else if (keyCode == DOWN) {
           colWin -= 1;
         } 

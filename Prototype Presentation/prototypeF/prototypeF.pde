@@ -124,8 +124,8 @@ void draw() {
   }
   
   //display CitySystem
-  light.shieldOpacity();
-  light.display();
+  //light.shieldOpacity();
+  //light.display();
 
   //display the terrain
   terrain.display();
