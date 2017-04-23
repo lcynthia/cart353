@@ -145,16 +145,12 @@ void keyPressed() {
   //if up arrow is pressed, increase light of buildings and light shield in sky
   if (key == CODED) {
     if (keyCode == UP) {
-      opaSky += 2;
+      opaSky += 0.25;
       whiteVal += 0.25;
       // if down arrow is pressed, decrease light of buildings and light shield in sky
     } else if (keyCode == DOWN) {
-      opaSky -= 2;
+      opaSky -= 0.25;
       whiteVal -= 0.25;
     }
   }
-}
-
-void lightCamera() {
-  
 }

@@ -1,9 +1,7 @@
 class CitySystem {
-  //creating skyCount variable for array length of Sky
-  int skyCount = 20;
-
+  //creating arraylist of Sky objects
   ArrayList<Sky> shield;
-  float colShield;
+  
 
   CitySystem() {
     shield = new ArrayList<Sky>();
@@ -11,25 +9,26 @@ class CitySystem {
   }
 
   void shieldOpacity() {
-  colShield = constrain(whiteVal, 1, 255);
-
+//if arrow up is pressed, add layer of Sky object
     if (keyPressed) {
       if (key == CODED) {
         if (keyCode == UP) {
           for (int i = 0; i < 5; i++) {
-            shield.add(new Sky(new PVector(-1300, 500, -1300), width*3.3, 60, color(colShield, opaSky), i));
+            shield.add(new Sky(new PVector(-900, 700, -1300), width*3.3, 60, i));
           }
         }
       }
     }
   }
 
+//function to display Sky objects
   void display() {
     Iterator<Sky> it = shield.iterator();
     while (it.hasNext()) {
       Sky shield = it.next();
       shield.display();
     }
+    //if arrow down is pressed, remove layer of Sky objects
     if (keyPressed) {
       if (key == CODED) {
         if (keyCode == DOWN) {
