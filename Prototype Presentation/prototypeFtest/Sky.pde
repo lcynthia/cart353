@@ -7,16 +7,15 @@ class Sky {
   //declaring offset for spacing between each rectangle
   float offset;
   //declaring sColor for color of the rectangles
-  color sColor;
+
   int iD;
   
 
-  Sky(PVector newLoc, float newSizeX, float newSizeY, color newColor, int newId) {
+  Sky(PVector newLoc, float newSizeX, float newSizeY, int newId) {
     //assigning variables to temporary ones taken from constructor 
     location = newLoc;
     sizeX = newSizeX;
     sizeY = newSizeY;
-    sColor = newColor;
     offset = sizeY;
     iD = newId;
   }
@@ -53,14 +52,17 @@ class Sky {
       rotateY(-(PI+PI/2));
        drawRects();
       popMatrix();
-    }   
+    }
+
+    
+   
    // popMatrix();
   }
   
   void drawRects()
   {
      for (int i = 0; i < 20; i++){
-    fill(sColor*i);
+    fill(whiteVal*i, millis()%opaSky*5);
     noStroke();
     rect(0, -60*i, sizeX, sizeY);
     }
