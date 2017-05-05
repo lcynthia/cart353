@@ -9,8 +9,6 @@ Building test;
 Building[] city = new Building[cityCount];
 //declaring Street object
 Street terrain;
-//declaring Space object
-Space one;
 //creating skyCount variable for array length of Sky
 int skyCount = 20;
 //creating starCount variable for array length of Star
@@ -64,8 +62,6 @@ void setup() {
   light = new CitySystem();
   //making instance of terrain object
   terrain = new Street(new PVector(width/2, 4*(height/5), -250), 1000, 1000);
-  //making instance of Space object
-  one = new Space(-1000, -5000, -2500);
   //making instances of Building object
   for (int i = 0; i < city.length; i++) {
     int sizeCity = int(random(25, 200));
